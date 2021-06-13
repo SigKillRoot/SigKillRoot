@@ -1,4 +1,17 @@
-    
+    to install and run, copy and paste the section below in your terminal
+-----
+
+git clone https://github.com/SigKillRoot/SigKillRoot.git
+
+cd SigKillRoot
+
+chmod +x ultionis_plot_man.sh
+
+chmod +x ultionis_plot_move.sh
+
+./ultionis_plot_man.sh
+
+-----
     Ultionis plot move
     Ultionis plot man
 
