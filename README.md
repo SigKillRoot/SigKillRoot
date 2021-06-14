@@ -5,7 +5,9 @@ git clone https://github.com/SigKillRoot/SigKillRoot.git
 
 cd SigKillRoot
 
-#these use MadMax chia plotter  https://github.com/madMAx43v3r/chia-plotter
+#these use MadMax chia plotter  
+#https://github.com/madMAx43v3r/chia-plotter
+
 chmod +x ultionis_plot_man.sh
 
 chmod +x ultionis_plot_move.sh
