@@ -14,7 +14,6 @@ chmod +x ultionis_plot_move.sh
 
 chmod +x upmgui.sh
 
-#for optional yad dialog log file gui
 sudo apt install yad
 
 #move files to your MadMax chia plotter /build/
