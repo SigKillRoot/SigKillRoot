@@ -60,8 +60,11 @@ if [ -n "$threadz" ]
 then
     zenity --info --text="Using $threadz Threads" --no-wrap
 fi
-buckz=`zenity --list --text="Buckets" --column="Buckets" --column= -- "32" \ "64" \ "128" \ "256" \ "512"`
-zenity --info --text="$buckz Buckets" --no-wrap
+buckz=$(zenity --entry --title="Buckets")
+if [ -n "$buckz" ]
+then
+    zenity --info --text="Using $buckz Buckets" --no-wrap
+fi
 echo
 plotz=$(zenity --entry --title="Plots to run")
 if [ -n "$plotz" ]
@@ -78,7 +81,7 @@ echo "OK"
 eval cd $max
 eval cd build
 maxbuild=$(pwd)
-zenity --info --title="STARTING PLOT LOOP" --text="TEMP $tempz
+zenity --info --title="STARTING PLOT LOOP" --timeout=1 --text="TEMP $tempz
 TEMP2 $temp2z
 DESTINATION $destz
 THREADS $threadz
@@ -86,9 +89,14 @@ BUCKETS $buckz" --no-wrap --timeout=1
 while true; do
     echo "Starting next plot"
     echo "Plot # " $xxx
-    eval nohup ./chia_plot -p $poolactual -f $farmactual -t $tempz/ -2 $temp2z/ -d $destz/ -r $threadz -u $buckz -n $plotz > plotlog.out 2>&1 &
-tail -f -n +0 plotlog.out | egrep 'Phase|creation|Copy|P1|P2|P3-1|P3-2|P4|Copy'
-yad --text-info < plotlog.out --title=Ultionis_Plot_Man__Plotting_log --width=800 --height=400 --tail --justify=center
+    eval nohup ./chia_plot -p $poolactual -f $farmactual -t $tempz/ -2 $temp2z/ -d $destz/ -r $threadz -u $buckz -n $plotz > plotlog.out &
+tail -n 500 -f plotlog.out | \
+yad --title="UPMGUI" --tail --window-icon=logviewer \
+    --button=gtk-close --geometry 600x800 \
+    --list --text="Content of $LOGFILE" \
+    --column Reading_Log \
+
+exit $?
 eval
     eval
     echo "Removing temp files"
@@ -99,4 +107,3 @@ eval
     done
 echo "End of script."
 done
-
