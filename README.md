@@ -5,15 +5,34 @@ git clone https://github.com/SigKillRoot/SigKillRoot.git
 
 cd SigKillRoot
 
+#these use MadMax chia plotter  https://github.com/madMAx43v3r/chia-plotter
 chmod +x ultionis_plot_man.sh
 
 chmod +x ultionis_plot_move.sh
 
-./ultionis_plot_man.sh
+chmod +x upmgui.sh
+
+#for optional yad dialog log file gui
+sudo apt install yad
+
+#move files to your MadMax chia plotter /build/
+./upmgui.sh
 
 -----
     Ultionis plot move
     Ultionis plot man
+    Ultionis plan man GUI
+
+Update June 14 02:30
+Simple plot creation, with automatic plot crash restart + wipes drives of temp files.
+Added GUI elements.
+Auto following GUI dialog box displays running log.
+
+
+Changed some things, added GUI interface to Ultionis plot man (upmgui.sh)
+not every lets the default mount points load to /media/ so a couple of people
+wanted another selection process.
+
 
 Messed up last night while adding more features. 
 Brought back to simple 1 drive to get plot from, 1 drive to send plot to.
